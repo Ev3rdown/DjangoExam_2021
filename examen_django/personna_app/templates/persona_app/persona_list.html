@@ -8,16 +8,7 @@
             <th>Id</th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Rue</th>
-            <th>Numéro de rue</th>
-            <th>Ville</th>
-            <th>Code Postal</th>
-            <th>Pays</th>
             <th>Email</th>
-            <th>Login</th>
-            <th>Mot de Passe</th>
-            <th>Age</th>
-            <th>Photo</th>
         </tr>
     </thead>
     <tbody>
@@ -27,16 +18,7 @@
             <td>({{ persona.id }})</td>
             <td><a href="{% url 'url_persona_detail' persona.id %}">{{ persona.first_name }}</a></td>
             <td>{{ persona.last_name }}</td>
-            <td>{{ persona.address_street }}</td>
-            <td>{{ persona.address_number }}</td>
-            <td>{{ persona.city }}</td>
-            <td>{{ persona.postcode }}</td>
-            <td>{{ persona.country }}</td>
             <td>{{ persona.email }}</td>
-            <td>{{ persona.username }}</td>
-            <td>{{ persona.password }}</td>
-            <td>{{ persona.age }}</td>
-            <td><img style="max-height: 50px" src="{{ persona.picture }}"></td>
         </td></tr>
         {% endfor %}
     </tbody>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Liste des persona{% endblock title %}
+{% block content %}
+<a href="{% url 'url_persona_list' %}">Retour à la liste</a>
+<div style="display: flex">
+    <img style="max-height: 250px" src="{{ persona.picture }}">
+    <div style="flex-direction: column">
+        <p><b>Nom complet:</b> {{ persona.first_name }} {{ persona.last_name }}</p>
+        <p><b>Age:</b> {{ persona.age }}</p>
+        <p><b>Adresse:</b> {{ persona.address_number }} {{ persona.address_street }}, {{ persona.city }} ({{ persona.postcode }}), {{ persona.country }}</p>
+        <p><b>Email:</b> {{ persona.email }}</p>
+        <p><b>Login:</b> {{ persona.username }}</p>
+        <p><b>Mot de passe:</b> {{ persona.password }}</p>
+    </div>
+</div>
+{% endblock content %}
