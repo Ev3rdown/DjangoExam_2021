@@ -18,4 +18,4 @@ class Persona(models.Model):
     picture        = models.CharField(max_length=200)
 
     def __str__(self):
-        return format_html(f"Persona {self.first_name} {self.last_name} ({self.id})</p>")
+        return f"Persona {self.first_name} {self.last_name} ({self.id})"

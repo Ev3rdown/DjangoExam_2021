@@ -1,5 +1,7 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+import requests
 
 from personna_app.models import Persona
 
@@ -19,4 +21,20 @@ def persona_detail(request,id):
     return render(request, 'persona_app/persona_detail.html', context)
 
 def persona_generate(request):
-    return HttpResponse(f'Génération de persona')
+    r = requests.get('https://randomuser.me/api?nat=fr')
+    json_data = r.json()
+    generatedPersona = Persona(first_name=json_data['results'][0]['name']['first'],
+        last_name       = json_data['results'][0]['name']['last'],
+        address_street  = json_data['results'][0]['location']['street']['name'],
+        address_number  = json_data['results'][0]['location']['street']['number'],
+        city            = json_data['results'][0]['location']['city'],
+        postcode        = json_data['results'][0]['location']['postcode'],
+        country         = json_data['results'][0]['location']['country'],
+        email           = json_data['results'][0]['email'],
+        username        = json_data['results'][0]['login']['username'],
+        password        = json_data['results'][0]['login']['password'],
+        age             = json_data['results'][0]['dob']['age'],
+        picture         = json_data['results'][0]['picture']['large'])
+    print(json.dumps(json_data, indent=4))
+    generatedPersona.save()
+    return redirect('url_persona_detail',id=generatedPersona.id)

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Liste des persona{% endblock title %}
 {% block content %}
-<a href="{% url 'url_persona_list' %}">Retour à la liste</a>
+<a href="{% url 'url_persona_list' %}" class="btn btn-outline-info" style="margin-bottom: 2em">Retour à la liste</a>
 <div style="display: flex">
-    <img style="max-height: 250px" src="{{ persona.picture }}">
+    <div style="padding: 20px">
+        <img style="max-height: 250px" src="{{ persona.picture }}">
+    </div>
     <div style="flex-direction: column">
         <p><b>Nom complet:</b> {{ persona.first_name }} {{ persona.last_name }}</p>
         <p><b>Age:</b> {{ persona.age }}</p>
