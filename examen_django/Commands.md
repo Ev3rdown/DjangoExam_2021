@@ -5,3 +5,4 @@
 - pip install requests
 - django-admin startproject personna_project .
 - django-admin startapp personna_app
+- python.exe .\manage.py migrate
