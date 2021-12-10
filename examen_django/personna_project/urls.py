@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from personna_app import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.persona_list, name="url_persona_list"),
+    path('persona_list/', views.persona_list, name="url_persona_list"),
+    path('persona_detail/<int:id>/', views.persona_detail, name="url_persona_detail"),
+    path('persona_generate/', views.persona_generate, name="url_persona_generate")
 ]
